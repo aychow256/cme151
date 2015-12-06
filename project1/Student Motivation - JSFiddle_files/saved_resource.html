@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://fiddle.jshell.net/aychow/5pg5bsrn/show/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Student Motivation - jsFiddle demo by aychow</title>
+  
+  
+  <script type="text/javascript" src="dummy.js"></script>
+  
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="result-light.css">
+  
+    
+      <script type="text/javascript" src="c3.min.js"></script><style type="text/css"></style>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="c3.min.css">
+    
+  
+    
+      <script type="text/javascript" src="d3.min.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    
+  
+  <style type="text/css">
+    
+  </style>
+  
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+var chart = c3.generate({
+  data: {
+    x: 'week',
+    columns: [
+      ['motivation', 100, 100, 90, 80, 80, 70, 40, 20, 0, 10, 0],
+      ['week', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    ],
+    axes: {
+      motivation: 'y',
+      week: 'x'
+    },
+    selection: {
+      enabled: true
+    }
+  },
+  axis: {
+    x: {
+      label: { // ADD
+        text: 'week',
+        position: 'center-middle'
+      }
+    },
+    y: {
+      show: true,
+      label: { // ADD
+        text: 'motivation level',
+        position: 'outer-middle'
+      }
+    }
+  }
+});
+
+var defaultMessage = document.getElementById('message').innerHTML,
+  currentIndex = 0,
+  timer, duration = 1500,
+  demos = [
+
+    function() {
+      chart.select(['motivation'], [0]);
+      setMessage('Week 1 of the quarter! So pumped!!!');
+    },
+
+    function() {
+      chart.select(['motivation'], [1]);
+      setMessage('Breezin\'...');
+    },
+
+    function() {
+      chart.select(['motivation'], [2]);
+      setMessage('Shit what did I get myself into');
+    },
+
+    function() {
+      chart.select(['motivation'], [3]);
+      setMessage('Midterms come at me!!!!');
+    },
+
+    function() {
+      chart.select(['motivation'], [4]);
+      setMessage('Midterms ain\'t got nothin\' on me');
+    },
+
+    function() {
+      chart.regions([{
+        start: 3,
+        end: 9
+      }]);
+      setMessage('Oh yeah I forgot midterm season is the ENTIRE QUARTER');
+    },
+
+    function() {
+      chart.select(['motivation'], [5]);
+      setMessage('Well shit');
+    },
+
+    function() {
+      chart.select(['motivation'], [6]);
+      setMessage('Oh my god 3 weeks left');
+    },
+
+    function() {
+      chart.select(['motivation'], [7]);
+      setMessage('THE LIGHT APPROACHETH. THE END OF MIDTERMS APPROACHETH');
+    },
+
+    function() {
+      chart.select(['motivation'], [8]);
+      setMessage('I can see the end...');
+    },
+
+    function() {
+      chart.select(['motivation'], [9]);
+      setMessage('So close...');
+    },
+
+    function() {
+      chart.select(['motivation'], [10]);
+      setMessage('WOO!!!! FINALS ARE HERE!!!');
+    }
+  ];
+
+function setMessage(message) {
+  document.getElementById('message').innerHTML = message;
+}
+
+d3.select('#start_btn').on("click", function() {
+  if (this.innerHTML === "Stop Demo") {
+    stopDemo();
+    this.innerHTML = "Continue Demo";
+    return;
+  }
+  this.innerHTML = "Stop Demo";
+  setMessage('Starting Demo..');
+  timer = setInterval(function() {
+    if (currentIndex == demos.length) currentIndex = 0;
+    demos[currentIndex++]();
+  }, duration);
+});
+
+function stopDemo() {
+  clearInterval(timer);
+};
+
+}//]]> 
+
+</script>
+
+</head>
+<body>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 well pull-right">
+      <h2>Student motivation over the quarter</h2>
+
+      <p>As the quarter progress, motivation levels of students may vary depending on how far into the quarter it is.</p>
+      <hr>
+      <p id="message" class="bg-info">Start the demo to see what happens to students over the quarter...</p>
+      <button id="start_btn" class="btn btn-primary pull-right">Start Demo</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="chart" class="c3" style="max-height: 320px; position: relative;"><svg width="500" height="320" style="overflow: hidden;"><defs><clippath id="c3-1449356103050-clip"><rect width="438" height="256"></rect></clippath><clippath id="c3-1449356103050-clip-xaxis"><rect x="-61" y="-20" width="530" height="80"></rect></clippath><clippath id="c3-1449356103050-clip-yaxis"><rect x="-59" y="-4" width="80" height="280"></rect></clippath><clippath id="c3-1449356103050-clip-grid"><rect width="438" height="256"></rect></clippath><clippath id="c3-1449356103050-clip-subchart"><rect width="438"></rect></clippath></defs><g transform="translate(60.5,4.5)"><text class="c3-text c3-empty" text-anchor="middle" dominant-baseline="middle" x="219" y="128" style="opacity: 0;"></text><rect class="c3-zoom-rect" width="438" height="256" style="opacity: 0;"></rect><g clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip)" class="c3-regions" style="visibility: visible;"></g><g clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip-grid)" class="c3-grid" style="visibility: visible;"><g class="c3-xgrid-focus"><line class="c3-xgrid-focus" x1="-10" x2="-10" y1="0" y2="256" style="visibility: hidden;"></line></g></g><g clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip)" class="c3-chart"><g class="c3-event-rects c3-event-rects-single" style="fill-opacity: 0;"><rect class=" c3-event-rect c3-event-rect-0" x="2.5" y="0" width="24" height="256"></rect><rect class=" c3-event-rect c3-event-rect-1" x="26.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-2" x="69.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-3" x="112.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-4" x="155.5" y="0" width="42.5" height="256"></rect><rect class=" c3-event-rect c3-event-rect-5" x="198" y="0" width="42.5" height="256"></rect><rect class=" c3-event-rect c3-event-rect-6" x="240.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-7" x="283.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-8" x="326.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-9" x="369.5" y="0" width="43" height="256"></rect><rect class=" c3-event-rect c3-event-rect-10" x="412.5" y="0" width="23.5" height="256"></rect></g><g class="c3-chart-bars"><g class="c3-chart-bar c3-target c3-target-motivation" style="opacity: 1; pointer-events: none;"><g class=" c3-shapes c3-shapes-motivation c3-bars c3-bars-motivation" style="cursor: pointer;"></g></g></g><g class="c3-chart-lines"><g class="c3-chart-line c3-target c3-target-motivation" style="opacity: 1; pointer-events: none;"><g class=" c3-shapes c3-shapes-motivation c3-lines c3-lines-motivation"><path class=" c3-shape c3-shape c3-line c3-line-motivation" d="M5,22.25000000000001L48,22.25000000000001L91,43.49999999999999L134,64.75L177,64.75L219,86.00000000000001L262,149.74999999999997L305,192.25L348,234.75L391,213.5L434,234.75" style="stroke: rgb(31, 119, 180); opacity: 1;"></path></g><g class=" c3-shapes c3-shapes-motivation c3-areas c3-areas-motivation"><path class=" c3-shape c3-shape c3-area c3-area-motivation" d="M 5 22.25000000000001" style="fill: rgb(31, 119, 180); opacity: 0.2;"></path></g><g class=" c3-selected-circles c3-selected-circles-motivation"></g><g class=" c3-shapes c3-shapes-motivation c3-circles c3-circles-motivation" style="cursor: pointer;"><circle class=" c3-shape c3-shape-0 c3-circle c3-circle-0" r="2.5" cx="5" cy="22.25000000000001" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-1 c3-circle c3-circle-1" r="2.5" cx="48" cy="22.25000000000001" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-2 c3-circle c3-circle-2" r="2.5" cx="91" cy="43.49999999999999" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-3 c3-circle c3-circle-3" r="2.5" cx="134" cy="64.75" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-4 c3-circle c3-circle-4" r="2.5" cx="177" cy="64.75" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-5 c3-circle c3-circle-5" r="2.5" cx="219" cy="86.00000000000001" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-6 c3-circle c3-circle-6" r="2.5" cx="262" cy="149.74999999999997" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-7 c3-circle c3-circle-7" r="2.5" cx="305" cy="192.25" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-8 c3-circle c3-circle-8" r="2.5" cx="348" cy="234.75" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-9 c3-circle c3-circle-9" r="2.5" cx="391" cy="213.5" style="fill: rgb(31, 119, 180); opacity: 1;"></circle><circle class=" c3-shape c3-shape-10 c3-circle c3-circle-10" r="2.5" cx="434" cy="234.75" style="fill: rgb(31, 119, 180); opacity: 1;"></circle></g></g></g><g class="c3-chart-arcs" transform="translate(219,123)"><text class="c3-chart-arcs-title" style="text-anchor: middle; opacity: 0;"></text></g><g class="c3-chart-texts"><g class="c3-chart-text c3-target c3-target-motivation" style="opacity: 1; pointer-events: none;"><g class=" c3-texts c3-texts-motivation"></g></g></g></g><g clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip-grid)" class="c3-grid c3-grid-lines"><g class="c3-xgrid-lines"></g><g class="c3-ygrid-lines"></g></g><g class="c3-axis c3-axis-x" clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip-xaxis)" transform="translate(0,256)" style="visibility: visible; opacity: 1;"><text class="c3-axis-x-label" transform="" x="219" dx="0" dy="3em" style="text-anchor: middle;">week</text><g class="tick" transform="translate(5, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">1</tspan></text></g><g class="tick" transform="translate(48, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">2</tspan></text></g><g class="tick" transform="translate(91, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">3</tspan></text></g><g class="tick" transform="translate(134, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">4</tspan></text></g><g class="tick" transform="translate(177, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">5</tspan></text></g><g class="tick" transform="translate(219, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">6</tspan></text></g><g class="tick" transform="translate(262, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">7</tspan></text></g><g class="tick" transform="translate(305, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">8</tspan></text></g><g class="tick" transform="translate(348, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">9</tspan></text></g><g class="tick" transform="translate(391, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">10</tspan></text></g><g class="tick" transform="translate(434, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">11</tspan></text></g><path class="domain" d="M0,6V0H438V6"></path></g><g class="c3-axis c3-axis-y" clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip-yaxis)" transform="translate(0,0)" style="visibility: visible; opacity: 1;"><text class="c3-axis-y-label" transform="rotate(-90)" x="-128" dx="0" dy="-36.671875" style="text-anchor: middle;">motivation level</text><g class="tick" transform="translate(0,256)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">-10</tspan></text></g><g class="tick" transform="translate(0,235)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">0</tspan></text></g><g class="tick" transform="translate(0,214)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">10</tspan></text></g><g class="tick" transform="translate(0,193)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">20</tspan></text></g><g class="tick" transform="translate(0,172)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">30</tspan></text></g><g class="tick" transform="translate(0,150)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">40</tspan></text></g><g class="tick" transform="translate(0,129)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">50</tspan></text></g><g class="tick" transform="translate(0,108)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">60</tspan></text></g><g class="tick" transform="translate(0,87)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">70</tspan></text></g><g class="tick" transform="translate(0,65)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">80</tspan></text></g><g class="tick" transform="translate(0,44)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">90</tspan></text></g><g class="tick" transform="translate(0,23)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">100</tspan></text></g><g class="tick" transform="translate(0,1)" style="opacity: 1;"><line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;"><tspan x="-9" dy="3">110</tspan></text></g><path class="domain" d="M-6,1H0V256H-6"></path></g><g class="c3-axis c3-axis-y2" transform="translate(438,0)" style="visibility: hidden; opacity: 1;"><text class="c3-axis-y2-label" transform="rotate(-90)" x="0" dx="-0.5em" dy="-0.5em" style="text-anchor: end;"></text><g class="tick" transform="translate(0,256)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0</tspan></text></g><g class="tick" transform="translate(0,231)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.1</tspan></text></g><g class="tick" transform="translate(0,205)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.2</tspan></text></g><g class="tick" transform="translate(0,180)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.3</tspan></text></g><g class="tick" transform="translate(0,154)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.4</tspan></text></g><g class="tick" transform="translate(0,129)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.5</tspan></text></g><g class="tick" transform="translate(0,103)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.6</tspan></text></g><g class="tick" transform="translate(0,78)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.7</tspan></text></g><g class="tick" transform="translate(0,52)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.8</tspan></text></g><g class="tick" transform="translate(0,27)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">0.9</tspan></text></g><g class="tick" transform="translate(0,1)" style="opacity: 1;"><line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;"><tspan x="9" dy="3">1</tspan></text></g><path class="domain" d="M6,1H0V256H6"></path></g></g><g transform="translate(40.5,320.5)" style="visibility: hidden;"><g clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip-subchart)" class="c3-chart"><g class="c3-chart-bars"></g><g class="c3-chart-lines"></g></g><g clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip)" class="c3-brush" style="pointer-events: all; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><rect class="background" x="0" width="473" style="visibility: hidden; cursor: crosshair;"></rect><rect class="extent" x="0" width="0" style="cursor: move;"></rect><g class="resize e" transform="translate(0,0)" style="cursor: ew-resize; display: none;"><rect x="-3" width="6" height="6" style="visibility: hidden;"></rect></g><g class="resize w" transform="translate(0,0)" style="cursor: ew-resize; display: none;"><rect x="-3" width="6" height="6" style="visibility: hidden;"></rect></g></g><g class="c3-axis-x" transform="translate(0,0)" clip-path="url(http://fiddle.jshell.net/aychow/5pg5bsrn/show/#c3-1449356103050-clip-xaxis)" style="opacity: 1;"><g class="tick" transform="translate(5, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">1</tspan></text></g><g class="tick" transform="translate(48, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">2</tspan></text></g><g class="tick" transform="translate(91, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">3</tspan></text></g><g class="tick" transform="translate(134, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">4</tspan></text></g><g class="tick" transform="translate(177, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">5</tspan></text></g><g class="tick" transform="translate(219, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">6</tspan></text></g><g class="tick" transform="translate(262, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">7</tspan></text></g><g class="tick" transform="translate(305, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">8</tspan></text></g><g class="tick" transform="translate(348, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">9</tspan></text></g><g class="tick" transform="translate(391, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: none;"><tspan x="0" dy=".71em" dx="0">10</tspan></text></g><g class="tick" transform="translate(434, 0)" style="opacity: 1;"><line y2="6" x1="0" x2="0"></line><text y="9" x="0" transform="" style="text-anchor: middle; display: block;"><tspan x="0" dy=".71em" dx="0">11</tspan></text></g><path class="domain" d="M0,6V0H438V6"></path></g></g><g transform="translate(0,300)"><g class=" c3-legend-item c3-legend-item-motivation" style="visibility: visible; cursor: pointer;"><text x="229.15625" y="9" style="pointer-events: none;">motivation</text><rect class="c3-legend-item-event" x="215.15625" y="-5" width="69.6875" height="18" style="fill-opacity: 0;"></rect><rect class="c3-legend-item-tile" x="215.15625" y="0" width="10" height="10" style="pointer-events: none; fill: rgb(31, 119, 180);"></rect></g></g></svg><div class="c3-tooltip-container" style="position: absolute; pointer-events: none; display: none;"></div></div>
+    </div>
+  </div>
+</div>
+
+  
+
+
+
+
+</body></html>
