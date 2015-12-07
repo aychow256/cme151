@@ -21,8 +21,8 @@ with open('all_cities_in_the_world.csv') as data_file:
 		if line.count(',') != 2:
 			continue
 		country, region, city = line.split(',')
-		if country != 'United States of America':
-			continue
+		#if country != 'United States of America':
+		#	continue
 		if firstline:
 			start_new(country)
 			start_new(region)
