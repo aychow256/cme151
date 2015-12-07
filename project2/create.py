@@ -6,14 +6,13 @@ json_file = open(json_filename, 'w')
 
 current_country = ''
 current_region = ''
-current_city = ''
 
-def start_new(name):
+def start(name):
 	json_file.write('{"name":"' + name + '","children":[')
 def end():
 	json_file.write(']}')
 
-start_new('Earth')
+start('Earth')
 
 with open('all_cities_in_the_world.csv') as data_file:
 	firstline = True
@@ -21,31 +20,28 @@ with open('all_cities_in_the_world.csv') as data_file:
 		if line.count(',') != 2:
 			continue
 		country, region, city = line.split(',')
-		#if country != 'United States of America':
-		#	continue
 		if firstline:
-			start_new(country)
-			start_new(region)
-			#start_new(city)
+			start(country)
+			start(region)
+			current_country = country
+			current_region = region
 			firstline = False
 		else:
-			#if city != current_city:
-			#	end()
-			#	start_new(city)
-			if region == current_region and country == current_country:
+			if country == current_country and region == current_region:
 				continue
-			if region != current_region:
-				end()
-				json_file.write(',')
-				start_new(region)
-				current_region = region
 			if country != current_country:
 				end()
+				end()
 				json_file.write(',')
-				start_new(country)
+				start(country)
 				current_country = country
+				start(region)
+			elif region != current_region:
+				end()
+				json_file.write(',')
+				start(region)
+				current_region = region
 
-#end()
 end()
 end()
 end()
