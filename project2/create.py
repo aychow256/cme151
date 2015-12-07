@@ -11,7 +11,7 @@ current_city = ''
 def start_new(name):
 	json_file.write('{"name":"' + name + '","children":[')
 def end():
-	json_file.write(']},')
+	json_file.write(']}')
 
 start_new('Earth')
 
@@ -36,10 +36,12 @@ with open('all_cities_in_the_world.csv') as data_file:
 				continue
 			if region != current_region:
 				end()
+				json_file.write(',')
 				start_new(region)
 				current_region = region
 			if country != current_country:
 				end()
+				json_file.write(',')
 				start_new(country)
 				current_country = country
 
