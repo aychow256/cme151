@@ -1,8 +1,8 @@
 import sys
-
+#http://jsfiddle.net/7dg6uajL/9/light/
 
 json_filename = 'all_cities_in_the_world.json'
-json_file = open(json_filename, 'a')
+json_file = open(json_filename, 'w')
 
 current_country = ''
 current_region = ''
@@ -32,12 +32,17 @@ with open('all_cities_in_the_world.csv') as data_file:
 			#if city != current_city:
 			#	end()
 			#	start_new(city)
+			if region == current_region and country == current_country:
+				continue
 			if region != current_region:
 				end()
 				start_new(region)
+				current_region = region
 			if country != current_country:
 				end()
 				start_new(country)
+				current_country = country
+
 #end()
 end()
 end()
